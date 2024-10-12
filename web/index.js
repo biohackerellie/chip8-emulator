@@ -114,6 +114,7 @@ function mainloop(chip8) {
     // Clear the canvas before drawing
     ctx.fillStyle = "black"
     ctx.fillRect(0, 0, WIDTH * SCALE, HEIGHT * SCALE)
+
     // Set the draw color back to white before we render our frame
     ctx.fillStyle = "white"
     chip8.draw_screen(SCALE)
