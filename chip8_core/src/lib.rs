@@ -90,7 +90,17 @@ impl Emu {
         // Decode & Execute
         self.execute(op)
     }
-
+    pub fn get_display(&self) -> &[bool] {
+        &self.screen
+    }
+    pub fn keypress(&mut self, idx: usize, pressed: bool) {
+        self.keys[idx] = pressed;
+    }
+    pub fn load(&mut self, data: &[u8]) {
+        let start = START_ADDR as usize;
+        let end = (START_ADDR as usize) + data.len();
+        self.ram[start..end].copy_from_slice(data);
+    }
     fn execute(&mut self, op: u16) {
         let digit1 = (op & 0xF000) >> 12;
         let digit2 = (op & 0x0F00) >> 8;
@@ -152,7 +162,7 @@ impl Emu {
             }
             // VX += NN
             (7, _, _, _) => {
-                let x = digi2 as usize;
+                let x = digit2 as usize;
                 let nn = (op & 0xFF) as u8;
                 self.v_reg[x] = self.v_reg[x].wrapping_add(nn);
             }
