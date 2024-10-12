@@ -26,11 +26,12 @@ function createStars(count) {
     
     star.style.top = `${Math.random() * 100}%`;
     star.style.left = `${Math.random() * 100}%`;
-    
+    const colors = ['#ffffff', '#ffdd57', '#a0c4ff', '#ffadad'];
+    const color = colors[Math.floor(Math.random() * colors.length)];
     const size = Math.random() * 2 + 1; // 1px to 3px
     star.style.width = `${size}px`;
     star.style.height = `${size}px`;
-    
+    star.style.backgroundColor = color; 
     const duration = Math.random() * 3 + 2; // 2s to 5s
     star.style.animationDuration = `${duration}s`;
     
