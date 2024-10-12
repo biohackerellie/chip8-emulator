@@ -14,6 +14,7 @@ const ctx = canvas.getContext("2d")
 ctx.fillStyle = "black"
 ctx.fillRect(0, 0, WIDTH * SCALE, HEIGHT * SCALE)
 
+const gameListElement = document.getElementById("game-list")
 /**
  * Function to create stars and append them to the starfield
  * @param {number} count - Number of stars to generate

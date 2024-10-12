@@ -1,5 +1,6 @@
 
 
+
 /* styles.css */
 
 /* Reset and Base Styles */
@@ -13,7 +14,6 @@ body {
   position: relative;
 }
 
-/* Starfield Styles */
 .starfield {
   position: fixed; /* Stay fixed during scrolling */
   top: 0;
@@ -25,24 +25,20 @@ body {
   background-color: #121212; /* Match body background */
 }
 
-/* Individual Star Styles */
 .star {
   position: absolute;
   background-color: white;
   width: 2px; /* Small square for 8-bit look */
   height: 2px;
-  /* No border-radius for pixelated stars */
   opacity: 0;
   animation: twinkle 2s infinite;
 }
 
-/* Twinkling Animation */
 @keyframes twinkle {
   0%, 100% { opacity: 0; }
   50% { opacity: 1; }
 }
 
-/* Main Container Styles */
 .container {
   text-align: center;
   position: relative;
@@ -50,13 +46,11 @@ body {
   padding: 20px;
 }
 
-/* Header Styles */
 h1 {
   margin-bottom: 20px;
   font-size: 2em;
 }
 
-/* Canvas Styles */
 canvas {
   background-color: #000000;
   border: 2px solid #ffffff;
@@ -64,22 +58,29 @@ canvas {
   margin: 0 auto;
 }
 
-/* Controls Section */
 .controls {
   margin-top: 20px;
 }
 
-/* Game List Styles */
+#game-list-container {
+  overflow-x: auto; /* Enable horizontal scrolling if needed */
+  padding: 10px 0;
+}
+
 #game-list {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping to next line if necessary */
+  justify-content: center; /* Center the game buttons */
+  gap: 10px; /* Space between buttons */
   list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 
 #game-list li {
-  margin: 10px 0;
+  /* No longer needed to manage individual list items */
 }
 
-/* Game Button Styles */
 #game-list button {
   padding: 10px 20px;
   font-size: 16px;
@@ -89,13 +90,40 @@ canvas {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
+  white-space: nowrap; /* Prevent text from wrapping */
+  flex: 0 0 auto; /* Prevent buttons from stretching */
 }
 
 #game-list button:hover {
   background-color: #333333;
 }
 
+/* Scrollbar Styling (Optional) */
+#game-list-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+#game-list-container::-webkit-scrollbar-track {
+  background: #1e1e1e;
+  border-radius: 4px;
+}
+
+#game-list-container::-webkit-scrollbar-thumb {
+  background: #555555;
+  border-radius: 4px;
+}
+
+#game-list-container::-webkit-scrollbar-thumb:hover {
+  background: #777777;
+}
+
 /* Responsive Design for Smaller Screens */
+@media (max-width: 800px) {
+  #game-list {
+    justify-content: flex-start; /* Align to start on smaller screens */
+  }
+}
+
 @media (max-width: 600px) {
   canvas {
     width: 100%;
